@@ -2,8 +2,13 @@ import PokemonCard from "@/components/PokemonCard";
 import { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 
+interface Pokemon {
+  name: String;
+  url: string;
+}
+
 export default function Index() {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Pokemon[]>([]);
   useEffect(() => {
     console.log("Entre en pantalla");
     getPokemons();
@@ -33,7 +38,7 @@ export default function Index() {
       {results.map((item) => {
         return (
           <PokemonCard
-            key={item.key}
+            key={item.name && ""}
             name={item.name}
             url={item.url}
           ></PokemonCard>
